@@ -8,30 +8,36 @@ public class PlayerAgent : Agent
 {
     Rigidbody agentRb;
     private RayPerception rayPer;
-    PlayerController playerController;
+    PlayerControllerSquare playerController;
     private TestAcademy envAcademy;
+
+    private GameObject[][] collectiblesObjects;
 
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerControllerSquare>();
         agentRb = GetComponent<Rigidbody>();
         rayPer = GetComponent<RayPerception>();
         envAcademy = FindObjectOfType<TestAcademy>();
+
+
     }
 
     public override void AgentReset()
     {
         agentRb.velocity = Vector3.zero;
-        this.transform.position = new Vector3(0, 0.5f, 0);
+        //this.transform.position = new Vector3(0, 0.5f, 0);
 
         playerController.resetCount();
-        envAcademy.AcademyReset();
+        envAcademy.moveCollectibles();
+       
+        //envAcademy.AcademyReset();
     }
 
     public override void CollectObservations()
     {
         // We include the position and velocity of the agent
-        AddVectorObs(this.transform.position);
+        //AddVectorObs(this.transform.position);
 
         AddVectorObs(agentRb.velocity.x);
         AddVectorObs(agentRb.velocity.z);
@@ -45,11 +51,23 @@ public class PlayerAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
+        /*
         // Actions, size = 2, move agent
         Vector3 controlSignal = Vector3.zero;
         controlSignal.x = vectorAction[0];
         controlSignal.z = vectorAction[1];
+
         agentRb.AddForce(controlSignal * playerController.speed);
+        */
+
+        Vector3 dirToGo = Vector3.zero;
+        Vector3 rotateDir = Vector3.zero;
+
+        dirToGo = transform.forward * Mathf.Clamp(vectorAction[0], -1f, 1f);
+        rotateDir = transform.up * Mathf.Clamp(vectorAction[1], -1f, 1f);
+
+        agentRb.AddForce(dirToGo * 2, ForceMode.VelocityChange);
+        transform.Rotate(rotateDir, Time.fixedDeltaTime * 300);
     }
 
     void OnTriggerEnter(Collider other)
@@ -57,11 +75,12 @@ public class PlayerAgent : Agent
         if (envAcademy.collectibles.Contains(other.gameObject.tag))
         {
             AddReward(1f);
+            Done();
 
-            if (playerController.getCount() == 10)
+            /*if (playerController.getCount() == 10)
             {
                 Done();
-            }
+            }*/
         }
     }
 

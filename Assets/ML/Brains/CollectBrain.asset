@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CollectBrain
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 32
+    vectorObservationSize: 30
     numStackedVectorObservations: 1
     vectorActionSize: 02000000
     cameraResolutions: []
@@ -21,4 +21,4 @@ MonoBehaviour:
     - 
     - 
     vectorActionSpaceType: 1
-  model: {fileID: 0}
+  model: {fileID: 4900000, guid: 1b975c44c561d43dab4102e41b2cb471, type: 3}

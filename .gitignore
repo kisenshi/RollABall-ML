@@ -6,6 +6,15 @@ UnitySDK.log
 Gizmos/
 ML-Agents/
 
+# Tensorflow Model Info
+/models
+/summaries
+
+# Training environments
+/envs
+
+/.vs/
+
 *.meta
 
 #Unity libraries ignore
@@ -58,4 +67,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-

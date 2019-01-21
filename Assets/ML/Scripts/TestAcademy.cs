@@ -21,15 +21,30 @@ public class TestAcademy : Academy {
         }
     }
 
+    public void moveCollectibles()
+    {
+        for (int i = 0; i < collectibles.Length; i++)
+        {
+            foreach (GameObject col in collectiblesObjects[i])
+            {
+                Rotator rotator = (Rotator)col.GetComponent(typeof(Rotator));
+                rotator.moveRandomnly();
+                col.SetActive(true);
+            }
+        }
+    }
+
     public override void AcademyReset()
     {
+        moveCollectibles();
+        /*
         for (int i = 0; i < collectibles.Length; i++)
         {
             foreach (GameObject col in collectiblesObjects[i])
             {
                 col.SetActive(true);
             }
-        }
+        }*/
     }
 
 }
