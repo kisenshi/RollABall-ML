@@ -21,6 +21,21 @@ public class TestAcademy : Academy {
         }
     }
 
+    public bool allCollectibles()
+    {
+        for (int i = 0; i < collectibles.Length; i++)
+        {
+            foreach (GameObject col in collectiblesObjects[i])
+            {
+                if (col.activeSelf){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public void moveCollectibles()
     {
         for (int i = 0; i < collectibles.Length; i++)

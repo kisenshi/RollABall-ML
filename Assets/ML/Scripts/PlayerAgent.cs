@@ -75,12 +75,14 @@ public class PlayerAgent : Agent
         if (envAcademy.collectibles.Contains(other.gameObject.tag))
         {
             AddReward(1f);
-            Done();
+        }
 
-            /*if (playerController.getCount() == 10)
+        if (envAcademy.collectibles.Contains(other.gameObject.tag))
+        {
+            if (envAcademy.allCollectibles())
             {
                 Done();
-            }*/
+            }
         }
     }
 
