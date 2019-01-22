@@ -26,6 +26,14 @@ CollectBrain:
     batch_size: 1024
     beta: 5.0e-3
     buffer_size: 10240
+    max_steps: 2.0e6
+    use_curiosity: false
+
+CollectBrain_curiosity:
+    normalize: false
+    batch_size: 1024
+    beta: 5.0e-3
+    buffer_size: 10240
     max_steps: 5.0e6
     use_curiosity: true
 
@@ -52,7 +60,7 @@ PushBlockLearning:
     time_horizon: 64
     num_layers: 2
 
-SmallWallJumpLearning: 
+SmallWallJumpLearning:
     max_steps: 1.0e6
     batch_size: 128
     buffer_size: 2048
@@ -63,7 +71,7 @@ SmallWallJumpLearning:
     num_layers: 2
     normalize: false
 
-BigWallJumpLearning: 
+BigWallJumpLearning:
     max_steps: 1.0e6
     batch_size: 128
     buffer_size: 2048
