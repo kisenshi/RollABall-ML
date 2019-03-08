@@ -1,21 +1,24 @@
+# Tutorial files
+utd2014.pdf
+[Aa]ssets/TutorialInfo*
+
 .DS_Store
 UnitySDK.log
 
 # ML ignore
-
 Gizmos/
 ML-Agents/
 
 # Tensorflow Model Info
+
 /models
 /summaries
 
 # Training environments
+
 /envs
 
 /.vs/
-
-*.meta
 
 #Unity libraries ignore
 
@@ -26,8 +29,12 @@ ML-Agents/
 [Bb]uilds/
 [Ll]ogs/
 
+# Never ignore Asset meta data
+![Aa]ssets/**/*.meta
+
 # Uncomment this line if you wish to ignore the asset store tools plugin
-# [Aa]ssets/AssetStoreTools*
+[Aa]ssets/AssetStoreTools*
+[Aa]ssets/Plugins*
 
 # Visual Studio cache directory
 .vs/
@@ -67,3 +74,25 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# RIDER
+
+# Exclude rider idea data
+.idea
+
+# Rider auto-generates .iml files, and contentModel.xml
+**/.idea/**/*.iml
+**/.idea/**/contentModel.xml
+**/.idea/**/modules.xml
+
+*.suo
+*.user
+.vs/
+[Bb]in/
+[Oo]bj/
+_UpgradeReport_Files/
+[Pp]ackages/
+
+Thumbs.db
+Desktop.ini
+.DS_Store
